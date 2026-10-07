@@ -1,0 +1,6 @@
+{
+  "name": "Jishnu & Praveena Wedding Invitation",
+  "description": "Sacred Wedding Invitation of Jishnu Vikraman Pillai & K.S. Praveena at Madathilkavu Bhagavathi Temple, Kunnamthanam with GPS navigation and photo gallery.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
