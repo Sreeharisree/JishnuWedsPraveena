@@ -9,6 +9,7 @@ import { BlessingsGuestbook } from './components/BlessingsGuestbook';
 import { FamilyContactsSection } from './components/FamilyContactsSection';
 import { Footer } from './components/Footer';
 import { CardShowcaseModal } from './components/CardShowcaseModal';
+import { YouTubeAudioPlayer } from './components/YouTubeAudioPlayer';
 
 export default function App() {
   const [isCardModalOpen, setIsCardModalOpen] = useState(false);
@@ -56,6 +57,9 @@ export default function App() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Background Indian Wedding Classical Music Player (YouTube: CqXjW27NlHs) */}
+      <YouTubeAudioPlayer />
 
       {/* Original Invitation Card Viewer Modal */}
       <CardShowcaseModal

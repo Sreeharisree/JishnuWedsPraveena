@@ -88,7 +88,7 @@ export const CardShowcaseModal: React.FC<CardShowcaseModalProps> = ({ isOpen, on
               K.S. Praveena
             </h3>
             <p className="text-xs text-[#5D4F44] mt-2 max-w-xl mx-auto leading-relaxed">
-              (Grand D/o. Late. Mr. K. V. Narayana Pillai & Late. Mrs. M. K. Saraswathi Amma &
+              (Grand D/o. Mr. K. V. Narayana Pillai & Late. Mrs. M. K. Saraswathi Amma &
               <br />
               Late. Mr. Nanukkuttan Nair & Mrs. Vijayamma, Ithithanam
               <br />
