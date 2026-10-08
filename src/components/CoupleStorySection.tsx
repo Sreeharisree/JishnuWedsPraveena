@@ -33,8 +33,8 @@ export const CoupleStorySection: React.FC = () => {
                 <span>The Beloved Groom</span>
               </div>
 
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#8B2635]">
-                {groom.name}
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight">
+                <span className="name-shimmer">{groom.name}</span>
               </h3>
 
               <div className="mt-4 p-4 bg-[#FAF7F2] border border-[#EBE0D2] rounded-xl space-y-2 text-xs sm:text-sm">
@@ -83,8 +83,8 @@ export const CoupleStorySection: React.FC = () => {
                 <span>The Beloved Bride</span>
               </div>
 
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#8B2635]">
-                {bride.name}
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight">
+                <span className="name-shimmer">{bride.name}</span>
               </h3>
 
               <div className="mt-4 p-4 bg-[#FAF7F2] border border-[#EBE0D2] rounded-xl space-y-2 text-xs sm:text-sm">

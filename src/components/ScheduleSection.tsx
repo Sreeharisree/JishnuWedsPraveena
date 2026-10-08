@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, MapPin, Utensils, Sparkles, Navigation } from 'lucide-react';
+import { Clock, Navigation, Sparkles, Heart } from 'lucide-react';
 
 interface ScheduleSectionProps {
   onNavigateToGps: () => void;
@@ -35,12 +35,12 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({ onNavigateToGp
       highlight: true,
     },
     {
-      time: '12:30 PM Onwards',
-      title: 'Traditional Kerala Sadya (Wedding Feast)',
-      location: 'Temple Oottupura / Dining Hall',
+      time: '12:20 PM Onwards',
+      title: 'Mangala Ashamsakal & Blessings',
+      location: 'Kalyana Mandapam Stage',
       description:
-        'A lavish multi-course traditional Kerala vegetarian feast served on plantain leaves, accompanied by classic payasams.',
-      icon: Utensils,
+        'Congratulating the newlywed couple, receiving heartfelt blessings from elders and family members, and commemorative photographs.',
+      icon: Heart,
       highlight: false,
     },
   ];
@@ -60,54 +60,49 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({ onNavigateToGp
           </p>
         </div>
 
-        <div className="relative pl-6 sm:pl-8 border-l-2 border-[#C5A059]/40 space-y-8 sm:space-y-10">
-          {events.map((event, idx) => {
-            const Icon = event.icon;
+        {/* Timeline Flow */}
+        <div className="relative pl-6 sm:pl-8 border-l-2 border-[#D9CABB] space-y-10 sm:space-y-12">
+          {events.map((evt, idx) => {
+            const Icon = evt.icon;
             return (
-              <div key={`event-${idx}`} className="relative group">
+              <div key={idx} className="relative group">
                 {/* Timeline Node */}
                 <div
-                  className={`absolute -left-[31px] sm:-left-[39px] top-1 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center border-2 ${
-                    event.highlight
-                      ? 'bg-[#8B2635] text-white border-[#C5A059] shadow-xs'
-                      : 'bg-white text-[#8B2635] border-[#D9CABB]'
+                  className={`absolute -left-[31px] sm:-left-[39px] top-1 w-8 h-8 rounded-full border-2 flex items-center justify-center transition-transform group-hover:scale-110 ${
+                    evt.highlight
+                      ? 'bg-[#8B2635] text-white border-[#C5A059] shadow-md'
+                      : 'bg-[#FFFDF9] text-[#8B2635] border-[#D9CABB]'
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <Icon className="w-4 h-4" />
                 </div>
 
-                {/* Content Card */}
+                {/* Event Card */}
                 <div
-                  className={`p-5 sm:p-6 rounded-xl border transition-all ${
-                    event.highlight
-                      ? 'bg-[#FFFDF9] border-[#C5A059] shadow-sm ring-1 ring-[#C5A059]/30'
-                      : 'bg-white border-[#E3D8C8] shadow-xs'
+                  className={`p-5 sm:p-6 rounded-2xl border transition-all ${
+                    evt.highlight
+                      ? 'bg-[#FFFDF9] border-[#C5A059] shadow-md'
+                      : 'bg-[#FFFDF9]/80 border-[#E8DEC8] hover:border-[#D9CABB]'
                   }`}
                 >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
                     <span
-                      className={`text-xs font-bold font-mono tracking-wider ${
-                        event.highlight ? 'text-[#8B2635]' : 'text-[#735E50]'
+                      className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
+                        evt.highlight
+                          ? 'bg-[#8B2635] text-white'
+                          : 'bg-[#F0E6D8] text-[#5A1723]'
                       }`}
                     >
-                      {event.time}
+                      {evt.time}
                     </span>
-                    <span className="text-xs font-medium text-[#5D4F44] flex items-center gap-1">
-                      <MapPin className="w-3 h-3 text-[#8B2635]" />
-                      <span>{event.location}</span>
-                    </span>
+                    <span className="text-xs text-[#8C7A6D]">{evt.location}</span>
                   </div>
 
-                  <h3
-                    className={`font-serif text-lg sm:text-xl font-bold ${
-                      event.highlight ? 'text-[#8B2635]' : 'text-[#2C241E]'
-                    }`}
-                  >
-                    {event.title}
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[#2C241E] mt-1">
+                    {evt.title}
                   </h3>
-
                   <p className="text-xs sm:text-sm text-[#5D4F44] mt-2 leading-relaxed">
-                    {event.description}
+                    {evt.description}
                   </p>
                 </div>
               </div>
@@ -115,13 +110,14 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({ onNavigateToGp
           })}
         </div>
 
-        <div className="mt-10 text-center">
+        {/* Action Prompt */}
+        <div className="mt-12 text-center">
           <button
             onClick={onNavigateToGps}
-            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-[#8B2635] hover:text-white bg-[#F0E6D8] hover:bg-[#8B2635] rounded-lg transition-colors border border-[#D9CABB] cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#8B2635] hover:bg-[#721F2B] active:bg-[#5C1822] text-white text-sm font-semibold rounded-xl shadow-xs transition-colors cursor-pointer"
           >
-            <Navigation className="w-3.5 h-3.5" />
-            <span>Check Routes & GPS for the Morning Departure</span>
+            <Navigation className="w-4 h-4" />
+            <span>View Driving Directions to Venue</span>
           </button>
         </div>
       </div>

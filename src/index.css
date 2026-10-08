@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 @layer base {
-  body {
+  body, html {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
   }
 }
 
@@ -25,4 +30,47 @@
 
 .animate-spin-slow {
   animation: spinSlow 12s linear infinite;
+}
+
+/* Minimal Luxury Gold Shimmer Animation for Bride & Groom Names */
+@keyframes shimmerGold {
+  0% {
+    background-position: -200% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.name-shimmer {
+  background: linear-gradient(
+    110deg,
+    #8B2635 15%,
+    #C5A059 38%,
+    #FFF4DE 50%,
+    #C5A059 62%,
+    #8B2635 85%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: shimmerGold 5s ease-in-out infinite;
+}
+
+/* Anti-Screenshot, Drag & Print Shields */
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+@media print {
+  html, body {
+    display: none !important;
+    visibility: hidden !important;
+  }
 }

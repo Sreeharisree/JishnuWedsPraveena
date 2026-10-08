@@ -105,16 +105,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCardModal, onNav
 
           {/* Couple Names */}
           <div className="my-6 sm:my-8 space-y-2">
-            <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#8B2635] text-balance">
-              {WEDDING_DATA.couple.groom.name}
+            <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-balance">
+              <span className="name-shimmer">{WEDDING_DATA.couple.groom.name}</span>
             </h1>
             <div className="flex items-center justify-center gap-3 py-1">
               <span className="h-px w-12 sm:w-16 bg-[#C5A059]" />
               <span className="font-traditional text-xl sm:text-2xl italic text-[#C5A059] font-semibold">with</span>
               <span className="h-px w-12 sm:w-16 bg-[#C5A059]" />
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-[#8B2635] text-balance">
-              {WEDDING_DATA.couple.bride.name}
+            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-balance">
+              <span className="name-shimmer">{WEDDING_DATA.couple.bride.name}</span>
             </h2>
           </div>
 

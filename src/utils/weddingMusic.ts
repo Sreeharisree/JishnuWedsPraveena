@@ -1,7 +1,7 @@
 type MusicListener = (isPlaying: boolean) => void;
 
 class WeddingMusicManager {
-  private isPlaying: boolean = false;
+  private isPlaying: boolean = true;
   private toggleHandler: (() => void) | null = null;
   private listeners: Set<MusicListener> = new Set();
 
