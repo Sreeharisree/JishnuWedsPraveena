@@ -33,25 +33,40 @@ export const BlessingsGuestbook: React.FC = () => {
       // Ignore localStorage quotas
     }
 
-    // Attempt background HTTP delivery silently without launching Gmail/external client
+    // Deliver real email in background directly to jweddsp@gmail.com without opening Gmail
     try {
-      if (typeof navigator !== 'undefined' && 'sendBeacon' in navigator) {
-        const beaconData = new FormData();
-        beaconData.append('to', 'jweddsp@gmail.com');
-        beaconData.append('subject', `Wedding Blessing for Jishnu & Praveena from ${name.trim()}`);
-        beaconData.append('name', name.trim());
-        beaconData.append('relation', relation.trim());
-        beaconData.append('attending', attending);
-        beaconData.append('message', message.trim());
-        // Background beacon quietly dispatches
-        navigator.sendBeacon('/api/send-blessing', beaconData);
-      }
-    } catch {
-      // Background silent fallback
-    }
+      const formData = new FormData();
+      formData.append('name', name.trim());
+      formData.append('relation', relation.trim() || 'Well-wisher / Guest');
+      formData.append('rsvp_attendance', attending);
+      formData.append('blessing_message', message.trim());
+      formData.append('_subject', `Sacred Wedding Blessing for Jishnu & Praveena from ${name.trim()}`);
+      formData.append('_captcha', 'false');
+      formData.append('_template', 'table');
 
-    // Simulate graceful swift transmission
-    await new Promise((resolve) => setTimeout(resolve, 600));
+      await fetch('https://formsubmit.co/ajax/jweddsp@gmail.com', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+        },
+        body: formData,
+      });
+    } catch {
+      // Fallback: beacon dispatch
+      try {
+        if (typeof navigator !== 'undefined' && 'sendBeacon' in navigator) {
+          const beaconData = new FormData();
+          beaconData.append('name', name.trim());
+          beaconData.append('relation', relation.trim() || 'Well-wisher');
+          beaconData.append('attendance', attending);
+          beaconData.append('blessing', message.trim());
+          beaconData.append('_captcha', 'false');
+          navigator.sendBeacon('https://formsubmit.co/ajax/jweddsp@gmail.com', beaconData);
+        }
+      } catch {
+        // Handled silently
+      }
+    }
 
     setSending(false);
     setSubmitted(true);
