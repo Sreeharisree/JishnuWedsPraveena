@@ -26,7 +26,7 @@ export interface PhotoItem {
 }
 
 // Configurable Google Drive audio link for the ceremony prayer
-export const WEDDING_AUDIO_DRIVE_URL = 'https://drive.google.com/file/d/1yclqvxt2iM3WPwrD0GppAQzjqq1ViXeQ/view';
+export const WEDDING_AUDIO_DRIVE_URL = 'https://drive.google.com/file/d/1JX-6BDsuJoXF-BUDZiuh-Z7M-OFvC-Vt/view';
 
 export const WEDDING_DATA = {
   couple: {
@@ -49,6 +49,7 @@ export const WEDDING_DATA = {
       fullName: 'K.S. Praveena',
       native: 'Kochuzhathil, Kunnamthanam',
       parents: 'Late. Mr. Sajikumar K. N. & Mrs. Prasannakumari P. N.',
+      brother: 'K. S. Praveen',
       grandparentsPaternal: 'Mr. K. V. Narayana Pillai & Late. Mrs. M. K. Saraswathi Amma',
       grandparentsMaternal: 'Late. Mr. Nanukkuttan Nair & Mrs. Vijayamma',
       grandparentsMaternalPlace: 'Ithithanam',
@@ -62,7 +63,7 @@ export const WEDDING_DATA = {
     star: 'Chithira (Chitra Nakshatra)',
     muhoorthamTime: '11:50 AM – 12:10 PM',
     venueName: 'Madathilkavu Bhagavathi Temple',
-    venueLocation: 'Kunnamthanam, Mallappally / Tiruvalla, Pathanamthitta District',
+    venueLocation: 'Kunnamthanam, Mallappally, Pathanamthitta',
   },
   hosts: {
     contactPersons: [
@@ -91,7 +92,7 @@ export const WEDDING_DATA = {
       latitude: 9.039832,
       longitude: 76.552164,
       departureTime: 'Party leaves at 8:00 AM from C. N. Junction',
-      contactPhones: ['9656795970', '8547303310'],
+      contactPhones: ['9656795970', '9947252533'],
       googleMapsUrl: 'https://maps.app.goo.gl/tPo6rBRYxvJBP947A',
       appleMapsUrl: 'https://maps.apple.com/?daddr=9.039832,76.552164&q=Groom+Home+Kizhakkupurathu',
       wazeUrl: 'https://waze.com/ul?ll=9.039832,76.552164&navigate=yes',
@@ -101,14 +102,14 @@ export const WEDDING_DATA = {
       title: 'Madathilkavu Bhagavathi Temple',
       subtitle: 'Wedding Ceremony & Auspicious Muhoortham',
       description: 'The sacred sanctum where the auspicious marriage ceremony and Thalikettu will be solemnized.',
-      address: 'Madathilkavu Bhagavathi Temple, Kunnamthanam, Mallappally / Tiruvalla, Pathanamthitta District, Kerala',
+      address: 'Madathilkavu Bhagavathi Temple, Kunnamthanam, Mallappally, Pathanamthitta, Kerala',
       pincode: '689581',
       district: 'Pathanamthitta, Kerala',
-      landmark: 'Kunnamthanam Junction, near Mallappally Road',
+      landmark: 'Kunnamthanam Junction, near Mallappally',
       latitude: 9.4215,
       longitude: 76.6190,
       departureTime: 'Muhoortham: 11:50 AM – 12:10 PM',
-      contactPhones: ['9656795970', '8547303310'],
+      contactPhones: ['9656795970', '9947252533'],
       googleMapsUrl: 'https://www.google.com/maps/dir/?api=1&destination=Madathilkavu+Bhagavathi+Temple+Kunnamthanam+Kerala&destination_coord=9.4215,76.6190',
       appleMapsUrl: 'https://maps.apple.com/?daddr=9.4215,76.6190&q=Madathilkavu+Bhagavathi+Temple+Kunnamthanam',
       wazeUrl: 'https://waze.com/ul?ll=9.4215,76.6190&navigate=yes',
@@ -116,13 +117,14 @@ export const WEDDING_DATA = {
   },
 };
 
+// Groom Photos (3)
 export const INITIAL_GROOM_PHOTOS: PhotoItem[] = [
   {
     id: 'groom-1',
     caption: 'Groom Portrait 1',
     category: 'groom',
-    url: 'https://drive.google.com/thumbnail?id=1NYX_sf_nLhRTY8j6upcmEow2OA3QhvaW&sz=w1600',
-    googleDriveUrl: 'https://drive.google.com/file/d/1NYX_sf_nLhRTY8j6upcmEow2OA3QhvaW/view',
+    url: 'https://drive.google.com/thumbnail?id=1ao2rk5YPsWjJ160xA9uSYasl-cs42U1S&sz=w1600',
+    googleDriveUrl: 'https://drive.google.com/file/d/1ao2rk5YPsWjJ160xA9uSYasl-cs42U1S/view',
     aspectRatio: '4/5',
   },
   {
@@ -137,44 +139,13 @@ export const INITIAL_GROOM_PHOTOS: PhotoItem[] = [
     id: 'groom-3',
     caption: 'Groom Portrait 3',
     category: 'groom',
-    url: 'https://drive.google.com/thumbnail?id=1ANmqeLhQbLNIaPa1JXUQj48OOZxzjq8k&sz=w1600',
-    googleDriveUrl: 'https://drive.google.com/file/d/1ANmqeLhQbLNIaPa1JXUQj48OOZxzjq8k/view',
-    aspectRatio: '4/5',
-  },
-  {
-    id: 'groom-4',
-    caption: 'Groom Portrait 4',
-    category: 'groom',
-    url: 'https://drive.google.com/thumbnail?id=1ao2rk5YPsWjJ160xA9uSYasl-cs42U1S&sz=w1600',
-    googleDriveUrl: 'https://drive.google.com/file/d/1ao2rk5YPsWjJ160xA9uSYasl-cs42U1S/view',
-    aspectRatio: '4/5',
-  },
-  {
-    id: 'groom-5',
-    caption: 'Groom Portrait 5',
-    category: 'groom',
-    url: 'https://drive.google.com/thumbnail?id=1qBk0vuc6OIcKAECWc6z_K0LxzcSI9AQV&sz=w1600',
-    googleDriveUrl: 'https://drive.google.com/file/d/1qBk0vuc6OIcKAECWc6z_K0LxzcSI9AQV/view',
-    aspectRatio: '4/5',
-  },
-  {
-    id: 'groom-6',
-    caption: 'Groom Portrait 6',
-    category: 'groom',
-    url: 'https://drive.google.com/thumbnail?id=1aK4XkYAXJY7E_JVf_cYFegJFJ9w6WUo1&sz=w1600',
-    googleDriveUrl: 'https://drive.google.com/file/d/1aK4XkYAXJY7E_JVf_cYFegJFJ9w6WUo1/view',
-    aspectRatio: '4/5',
-  },
-  {
-    id: 'groom-7',
-    caption: 'Groom Portrait 7',
-    category: 'groom',
-    url: 'https://drive.google.com/thumbnail?id=1PSoIkEV-pxCLx8x_YBYJVuGSOH4JLGhy&sz=w1600',
-    googleDriveUrl: 'https://drive.google.com/file/d/1PSoIkEV-pxCLx8x_YBYJVuGSOH4JLGhy/view',
+    url: 'https://drive.google.com/thumbnail?id=1detB4cipBDHROR18mkoiOoEDGcGuIb1v&sz=w1600',
+    googleDriveUrl: 'https://drive.google.com/file/d/1detB4cipBDHROR18mkoiOoEDGcGuIb1v/view',
     aspectRatio: '4/5',
   },
 ];
 
+// Bride Photos (3)
 export const INITIAL_BRIDE_PHOTOS: PhotoItem[] = [
   {
     id: 'bride-1',
@@ -188,37 +159,13 @@ export const INITIAL_BRIDE_PHOTOS: PhotoItem[] = [
     id: 'bride-2',
     caption: 'Bride Portrait 2',
     category: 'bride',
-    url: 'https://drive.google.com/thumbnail?id=1rDqsjmLRhkssH901FH2BaGUD2VfWUQw1&sz=w1600',
-    googleDriveUrl: 'https://drive.google.com/file/d/1rDqsjmLRhkssH901FH2BaGUD2VfWUQw1/view',
-    aspectRatio: '4/5',
-  },
-  {
-    id: 'bride-3',
-    caption: 'Bride Portrait 3',
-    category: 'bride',
-    url: 'https://drive.google.com/thumbnail?id=1O7haYAfEZArV4uMXCjuaGviBfhM1AedW&sz=w1600',
-    googleDriveUrl: 'https://drive.google.com/file/d/1O7haYAfEZArV4uMXCjuaGviBfhM1AedW/view',
-    aspectRatio: '4/5',
-  },
-  {
-    id: 'bride-4',
-    caption: 'Bride Portrait 4',
-    category: 'bride',
     url: 'https://drive.google.com/thumbnail?id=12g0oTeRWzicaUJgN_0buwBihOxFJYi-J&sz=w1600',
     googleDriveUrl: 'https://drive.google.com/file/d/12g0oTeRWzicaUJgN_0buwBihOxFJYi-J/view',
     aspectRatio: '4/5',
   },
   {
-    id: 'bride-5',
-    caption: 'Bride Portrait 5',
-    category: 'bride',
-    url: 'https://drive.google.com/thumbnail?id=1jfJUhmi7b8DngJkLXjVdPeutcZTTItqh&sz=w1600',
-    googleDriveUrl: 'https://drive.google.com/file/d/1jfJUhmi7b8DngJkLXjVdPeutcZTTItqh/view',
-    aspectRatio: '4/5',
-  },
-  {
-    id: 'bride-6',
-    caption: 'Bride Portrait 6',
+    id: 'bride-3',
+    caption: 'Bride Portrait 3',
     category: 'bride',
     url: 'https://drive.google.com/thumbnail?id=17xirEkN43I5FKRzKIxhBCm4Qr6MhAou_&sz=w1600',
     googleDriveUrl: 'https://drive.google.com/file/d/17xirEkN43I5FKRzKIxhBCm4Qr6MhAou_/view',
@@ -226,10 +173,11 @@ export const INITIAL_BRIDE_PHOTOS: PhotoItem[] = [
   },
 ];
 
+// All Moments Photos (6)
 export const INITIAL_COUPLE_PHOTOS: PhotoItem[] = [
   {
     id: 'moment-1',
-    caption: 'Wedding Moment 1',
+    caption: 'All Moments 1',
     category: 'couple',
     url: 'https://drive.google.com/thumbnail?id=1Mf3jvqXAaRqXE5ZzXf8d06mPA7eSQP4J&sz=w1600',
     googleDriveUrl: 'https://drive.google.com/file/d/1Mf3jvqXAaRqXE5ZzXf8d06mPA7eSQP4J/view',
@@ -237,66 +185,59 @@ export const INITIAL_COUPLE_PHOTOS: PhotoItem[] = [
   },
   {
     id: 'moment-2',
-    caption: 'Wedding Moment 2',
-    category: 'couple',
-    url: 'https://drive.google.com/thumbnail?id=1GtxkO2R-A5g6267gCCeOtorBIDvH2moj&sz=w1600',
-    googleDriveUrl: 'https://drive.google.com/file/d/1GtxkO2R-A5g6267gCCeOtorBIDvH2moj/view',
-    aspectRatio: '4/5',
-  },
-  {
-    id: 'moment-3',
-    caption: 'Wedding Moment 3',
-    category: 'couple',
-    url: 'https://drive.google.com/thumbnail?id=1NPXvrqoxAstJWVkkCB8gWQnbFHtJ42XM&sz=w1600',
-    googleDriveUrl: 'https://drive.google.com/file/d/1NPXvrqoxAstJWVkkCB8gWQnbFHtJ42XM/view',
-    aspectRatio: '4/5',
-  },
-  {
-    id: 'moment-4',
-    caption: 'Wedding Moment 4',
-    category: 'couple',
-    url: 'https://drive.google.com/thumbnail?id=1KtcuEOyUhP4Nb1mZwcasyN1NjVc7H8o_&sz=w1600',
-    googleDriveUrl: 'https://drive.google.com/file/d/1KtcuEOyUhP4Nb1mZwcasyN1NjVc7H8o_/view',
-    aspectRatio: '4/5',
-  },
-  {
-    id: 'moment-5',
-    caption: 'Wedding Moment 5',
-    category: 'couple',
-    url: 'https://drive.google.com/thumbnail?id=10YdJSY7lf3GrwKer6D9O9V_uKClwWS5J&sz=w1600',
-    googleDriveUrl: 'https://drive.google.com/file/d/10YdJSY7lf3GrwKer6D9O9V_uKClwWS5J/view',
-    aspectRatio: '4/5',
-  },
-  {
-    id: 'moment-6',
-    caption: 'Wedding Moment 6',
+    caption: 'All Moments 2',
     category: 'couple',
     url: 'https://drive.google.com/thumbnail?id=1nAUqPFOC116ryhbGJFA-7cWzSZn8b83C&sz=w1600',
     googleDriveUrl: 'https://drive.google.com/file/d/1nAUqPFOC116ryhbGJFA-7cWzSZn8b83C/view',
     aspectRatio: '4/5',
   },
   {
-    id: 'moment-7',
-    caption: 'Wedding Moment 7',
+    id: 'moment-3',
+    caption: 'All Moments 3',
     category: 'couple',
     url: 'https://drive.google.com/thumbnail?id=12CjQ0dDiLx2GZ7s-dHO3461HCH9OIQSl&sz=w1600',
     googleDriveUrl: 'https://drive.google.com/file/d/12CjQ0dDiLx2GZ7s-dHO3461HCH9OIQSl/view',
     aspectRatio: '4/5',
   },
   {
-    id: 'moment-8',
-    caption: 'Wedding Moment 8',
-    category: 'couple',
-    url: 'https://drive.google.com/thumbnail?id=1yphQaS-2xOOncTxNGBt8yiIgFLDTtD22&sz=w1600',
-    googleDriveUrl: 'https://drive.google.com/file/d/1yphQaS-2xOOncTxNGBt8yiIgFLDTtD22/view',
-    aspectRatio: '4/5',
-  },
-  {
-    id: 'moment-9',
-    caption: 'Wedding Moment 9',
+    id: 'moment-4',
+    caption: 'All Moments 4',
     category: 'couple',
     url: 'https://drive.google.com/thumbnail?id=1XOpIk7bfBfeD1r44pw03AdCNZ6vhqEkC&sz=w1600',
     googleDriveUrl: 'https://drive.google.com/file/d/1XOpIk7bfBfeD1r44pw03AdCNZ6vhqEkC/view',
     aspectRatio: '4/5',
   },
+  {
+    id: 'moment-5',
+    caption: 'All Moments 5',
+    category: 'couple',
+    url: 'https://drive.google.com/thumbnail?id=1KtcuEOyUhP4Nb1mZwcasyN1NjVc7H8o_&sz=w1600',
+    googleDriveUrl: 'https://drive.google.com/file/d/1KtcuEOyUhP4Nb1mZwcasyN1NjVc7H8o_/view',
+    aspectRatio: '4/5',
+  },
+  {
+    id: 'moment-6',
+    caption: 'All Moments 6',
+    category: 'couple',
+    url: 'https://drive.google.com/thumbnail?id=10YdJSY7lf3GrwKer6D9O9V_uKClwWS5J&sz=w1600',
+    googleDriveUrl: 'https://drive.google.com/file/d/10YdJSY7lf3GrwKer6D9O9V_uKClwWS5J/view',
+    aspectRatio: '4/5',
+  },
+];
+
+// Exact requested carousel sequence:
+// All Moments 1, Groom 1, All Moments 2, All Moments 3, All Moments 4, All Moments 5, All Moments 6, Bride 1, Groom 2, Bride 2, Groom 3, Bride 3
+export const CAROUSEL_ORDERED_PHOTOS: PhotoItem[] = [
+  INITIAL_COUPLE_PHOTOS[0], // All Moments 1
+  INITIAL_GROOM_PHOTOS[0],  // Groom 1
+  INITIAL_COUPLE_PHOTOS[1], // All Moments 2
+  INITIAL_COUPLE_PHOTOS[2], // All Moments 3
+  INITIAL_COUPLE_PHOTOS[3], // All Moments 4
+  INITIAL_COUPLE_PHOTOS[4], // All Moments 5
+  INITIAL_COUPLE_PHOTOS[5], // All Moments 6
+  INITIAL_BRIDE_PHOTOS[0],  // Bride 1
+  INITIAL_GROOM_PHOTOS[1],  // Groom 2
+  INITIAL_BRIDE_PHOTOS[1],  // Bride 2
+  INITIAL_GROOM_PHOTOS[2],  // Groom 3
+  INITIAL_BRIDE_PHOTOS[2],  // Bride 3
 ];

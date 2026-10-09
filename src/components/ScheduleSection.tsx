@@ -1,11 +1,11 @@
 import React from 'react';
-import { Clock, Navigation, Sparkles, Heart } from 'lucide-react';
+import { Clock, Navigation, Bell, Heart } from 'lucide-react';
 
 interface ScheduleSectionProps {
-  onNavigateToGps: () => void;
+  onNavigateToGps?: () => void;
 }
 
-export const ScheduleSection: React.FC<ScheduleSectionProps> = ({ onNavigateToGps }) => {
+export const ScheduleSection: React.FC<ScheduleSectionProps> = () => {
   const events = [
     {
       time: '08:00 AM',
@@ -22,7 +22,7 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({ onNavigateToGp
       location: 'Madathilkavu Bhagavathi Temple Entrance',
       description:
         'Ceremonial welcome with auspicious Thalappoli, traditional Nadaswaram, and temple greetings by the bride’s family.',
-      icon: Sparkles,
+      icon: Bell,
       highlight: false,
     },
     {
@@ -46,9 +46,9 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({ onNavigateToGp
   ];
 
   return (
-    <section id="schedule" className="py-16 md:py-24 bg-[#F5EFE6]/50 border-t border-[#ECE2D0]">
+    <section id="schedule" className="py-10 md:py-16 bg-[#F5EFE6]/50 border-t border-[#ECE2D0]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-8">
           <span className="text-xs font-semibold uppercase tracking-widest text-[#8B2635]">
             Auspicious Order of Events
           </span>
@@ -108,17 +108,6 @@ export const ScheduleSection: React.FC<ScheduleSectionProps> = ({ onNavigateToGp
               </div>
             );
           })}
-        </div>
-
-        {/* Action Prompt */}
-        <div className="mt-12 text-center">
-          <button
-            onClick={onNavigateToGps}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#8B2635] hover:bg-[#721F2B] active:bg-[#5C1822] text-white text-sm font-semibold rounded-xl shadow-xs transition-colors cursor-pointer"
-          >
-            <Navigation className="w-4 h-4" />
-            <span>View Driving Directions to Venue</span>
-          </button>
         </div>
       </div>
     </section>

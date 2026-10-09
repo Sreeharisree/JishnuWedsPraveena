@@ -9,7 +9,7 @@ import {
   PhotoItem,
   INITIAL_GROOM_PHOTOS,
   INITIAL_BRIDE_PHOTOS,
-  INITIAL_COUPLE_PHOTOS,
+  CAROUSEL_ORDERED_PHOTOS,
 } from '../data/weddingDetails';
 
 export const PhotoGallerySection: React.FC = () => {
@@ -17,23 +17,21 @@ export const PhotoGallerySection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const groomPhotos: PhotoItem[] = INITIAL_GROOM_PHOTOS;
-  const bridePhotos: PhotoItem[] = INITIAL_BRIDE_PHOTOS;
-  const allMomentsPhotos: PhotoItem[] = INITIAL_COUPLE_PHOTOS;
-
-  // Complete gallery: all moments, groom, and bride
-  const allPhotos: PhotoItem[] = [
-    ...allMomentsPhotos,
-    ...groomPhotos,
-    ...bridePhotos,
-  ];
-
-  const displayedPhotos =
+  const displayedPhotos: PhotoItem[] =
     activeCategory === 'groom'
-      ? groomPhotos
+      ? INITIAL_GROOM_PHOTOS
       : activeCategory === 'bride'
-      ? bridePhotos
-      : allPhotos;
+      ? INITIAL_BRIDE_PHOTOS
+      : CAROUSEL_ORDERED_PHOTOS;
+
+  // Carousel is always in continuous infinite loop (only pauses if user opens fullscreen lightbox)
+  useEffect(() => {
+    if (lightboxIndex !== null) return;
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % displayedPhotos.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [lightboxIndex, displayedPhotos.length]);
 
   // Reset active index when category changes
   const handleCategoryChange = (category: 'all' | 'groom' | 'bride') => {
@@ -94,10 +92,10 @@ export const PhotoGallerySection: React.FC = () => {
   }, [lightboxIndex, displayedPhotos.length]);
 
   return (
-    <section id="photos" className="py-16 md:py-24 bg-[#FAF7F2] overflow-hidden select-none">
+    <section id="photos" className="py-10 md:py-16 bg-[#FAF7F2] overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8">
+        <div className="text-center max-w-2xl mx-auto mb-6">
           <span className="text-xs font-semibold uppercase tracking-widest text-[#8B2635]">
             Bridal & Groom Moments
           </span>
@@ -109,7 +107,7 @@ export const PhotoGallerySection: React.FC = () => {
           </p>
         </div>
 
-        {/* Category Filter Tabs (Zero counts on buttons) */}
+        {/* Category Filter Tabs */}
         <div className="flex justify-center mb-10">
           <div className="inline-flex p-1 bg-[#EAE0D2] rounded-xl border border-[#D9CEBF]">
             <button
@@ -145,7 +143,7 @@ export const PhotoGallerySection: React.FC = () => {
           </div>
         </div>
 
-        {/* 3D Flow Carousel Stage (Reference Mockup Style) */}
+        {/* 3D Flow Carousel Stage */}
         <div
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
@@ -209,8 +207,7 @@ export const PhotoGallerySection: React.FC = () => {
                   alt=""
                   loading="lazy"
                   referrerPolicy="no-referrer"
-                  draggable={false}
-                  className="w-full h-full object-cover select-none pointer-events-none"
+                  className="absolute inset-0 w-full h-full object-cover block"
                 />
 
                 {/* Subtle Hover Zoom Overlay on Center Card */}
@@ -226,30 +223,34 @@ export const PhotoGallerySection: React.FC = () => {
           })}
         </div>
 
-        {/* Bottom Circular Navigation Controls (Reference Mockup Style) */}
-        <div className="mt-8 flex flex-col items-center gap-3">
-          <div className="flex items-center gap-4">
-            <button
-              onClick={handlePrev}
-              aria-label="Previous photo"
-              className="w-10 h-10 rounded-full border border-[#D9CABB] bg-white hover:bg-[#FAF7F2] active:bg-[#F0E6D8] text-[#8B2635] flex items-center justify-center shadow-xs transition-colors cursor-pointer"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
+        {/* Pagination Dots (Always in Infinite Loop, No Background, No End Arrows) */}
+        <div className="mt-7 flex items-center justify-center gap-1.5 sm:gap-2 select-none">
+          {displayedPhotos.map((_, dotIdx) => {
+            const total = displayedPhotos.length;
+            let circularDist = Math.abs(dotIdx - activeIndex);
+            if (circularDist > total / 2) circularDist = total - circularDist;
 
-            {/* Slide Index Counter */}
-            <span className="text-xs font-semibold text-[#735E50] tracking-wider min-w-[60px] text-center">
-              {activeIndex + 1} / {displayedPhotos.length}
-            </span>
+            const isActive = circularDist === 0;
 
-            <button
-              onClick={handleNext}
-              aria-label="Next photo"
-              className="w-10 h-10 rounded-full border border-[#D9CABB] bg-white hover:bg-[#FAF7F2] active:bg-[#F0E6D8] text-[#8B2635] flex items-center justify-center shadow-xs transition-colors cursor-pointer"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
+            let dotStyle = 'w-1.5 h-1.5 bg-[#D9CABB] opacity-50';
+            if (isActive) {
+              dotStyle =
+                'w-7 sm:w-8 h-2 bg-gradient-to-r from-[#8B2635] via-[#A83244] to-[#C5A059] shadow-xs shadow-[#8B2635]/30 opacity-100 ring-2 ring-[#C5A059]/40';
+            } else if (circularDist === 1) {
+              dotStyle = 'w-3 h-2 bg-[#8B2635]/65 opacity-85 hover:opacity-100';
+            } else if (circularDist === 2) {
+              dotStyle = 'w-2 h-2 bg-[#C5A059]/65 opacity-70 hover:opacity-100';
+            }
+
+            return (
+              <button
+                key={dotIdx}
+                onClick={() => setActiveIndex(dotIdx)}
+                aria-label={`View photo ${dotIdx + 1}`}
+                className={`rounded-full transition-all duration-500 ease-out cursor-pointer hover:scale-110 ${dotStyle}`}
+              />
+            );
+          })}
         </div>
 
         {/* Modal: Fullscreen Lightbox View */}
@@ -304,8 +305,7 @@ export const PhotoGallerySection: React.FC = () => {
                 src={displayedPhotos[lightboxIndex].url}
                 alt=""
                 referrerPolicy="no-referrer"
-                draggable={false}
-                className="max-h-[85vh] max-w-full rounded-2xl object-contain shadow-2xl animate-in zoom-in-95 duration-200 select-none pointer-events-none"
+                className="max-h-[85vh] max-w-full rounded-2xl object-contain shadow-2xl animate-in zoom-in-95 duration-200"
               />
             </div>
 

@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Clock, MapPin, Share2, Compass, Check, Download } from 'lucide-react';
+import {
+  Calendar,
+  Clock,
+  MapPin,
+  Share2,
+  Check,
+  Compass,
+  Hourglass,
+  Sparkles,
+} from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingDetails';
 
 interface HeroSectionProps {
@@ -7,45 +16,52 @@ interface HeroSectionProps {
   onNavigateToGps: () => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCardModal, onNavigateToGps }) => {
+export const HeroSection: React.FC<HeroSectionProps> = ({
+  onOpenCardModal,
+  onNavigateToGps,
+}) => {
   const [copiedLink, setCopiedLink] = useState(false);
-  const [timeLeft, setTimeLeft] = useState<{
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-  }>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-  // Wedding Muhurtham: 06 Dec 2026 11:50 AM IST (UTC+5:30)
+  // Countdown timer calculation to the Muhoortham
+  const targetTime = new Date('2026-12-06T11:50:00+05:30').getTime();
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  // Hourglass rotation angle that turns 180° on every second tick
+  const [hourglassAngle, setHourglassAngle] = useState(0);
+
   useEffect(() => {
-    const weddingTimestamp = new Date('2026-12-06T11:50:00+05:30').getTime();
+    setHourglassAngle((prev) => prev + 180);
+  }, [timeLeft.seconds]);
 
+  useEffect(() => {
     const updateCountdown = () => {
       const now = new Date().getTime();
-      const difference = weddingTimestamp - now;
+      const difference = targetTime - now;
 
-      if (difference <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000),
+        });
       }
-
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-      setTimeLeft({ days, hours, minutes, seconds });
     };
 
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [targetTime]);
 
   const handleShare = async () => {
     const shareData = {
       title: 'Wedding Invitation: Jishnu & Praveena',
-      text: 'You are cordially invited to the wedding of Jishnu Vikraman Pillai & K.S. Praveena on Sunday, 06 December 2026 at Madathilkavu Bhagavathi Temple, Kunnamthanam.',
+      text: 'Cordially inviting you with family to the wedding ceremony of Jishnu Vikraman Pillai & K.S. Praveena on Sunday, 06 Dec 2026.',
       url: window.location.href,
     };
 
@@ -64,7 +80,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCardModal, onNav
   };
 
   const handleAddToCalendar = () => {
-    // Google Calendar direct URL
     const title = encodeURIComponent('Wedding: Jishnu Vikraman Pillai & K.S. Praveena');
     const details = encodeURIComponent(
       'Wedding ceremony and Muhoortham of Jishnu Vikraman Pillai & K.S. Praveena.\nMuhoortham: Between 11:50 AM & 12:10 PM.\nVenue: Madathilkavu Bhagavathi Temple, Kunnamthanam, Kerala.\nGroom party leaves at 8:00 AM from C.N. Junction, Karunagappally.'
@@ -77,13 +92,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCardModal, onNav
   };
 
   return (
-    <section id="invitation" className="relative py-12 md:py-20 overflow-hidden">
+    <section id="invitation" className="relative py-8 md:py-14 overflow-hidden">
       {/* Background Subtle Kerala Temple Motif Texture */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.035] bg-[radial-gradient(#8B2635_1px,transparent_1px)] [background-size:20px_20px]" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative text-center">
         {/* Traditional Invitation Header Card Frame */}
-        <div className="bg-[#FFFDF9] border border-[#E8DCC8] rounded-2xl shadow-sm p-6 sm:p-10 md:p-12 relative overflow-hidden">
+        <div className="bg-[#FFFDF9] border border-[#E8DCC8] rounded-3xl shadow-sm p-5 sm:p-8 md:p-10 relative overflow-hidden">
           {/* Decorative Corner Ornaments */}
           <div className="absolute top-3 left-3 w-8 h-8 border-t-2 border-l-2 border-[#C5A059] opacity-80" />
           <div className="absolute top-3 right-3 w-8 h-8 border-t-2 border-r-2 border-[#C5A059] opacity-80" />
@@ -104,7 +119,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCardModal, onNav
           </div>
 
           {/* Couple Names */}
-          <div className="my-6 sm:my-8 space-y-2">
+          <div className="my-5 sm:my-6 space-y-2">
             <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-balance">
               <span className="name-shimmer">{WEDDING_DATA.couple.groom.name}</span>
             </h1>
@@ -118,8 +133,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCardModal, onNav
             </h2>
           </div>
 
-          {/* Auspicious Date & Muhurtham Details (No pill boxes, clean typographic layout) */}
-          <div className="max-w-xl mx-auto my-6 sm:my-8 py-5 border-y border-[#ECE2D0] grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
+          {/* Auspicious Date & Muhurtham Details */}
+          <div className="max-w-xl mx-auto my-5 sm:my-6 py-4 border-y border-[#ECE2D0] grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
             <div className="space-y-1 sm:border-r sm:border-[#ECE2D0] sm:pr-4">
               <div className="flex items-center justify-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#735E50]">
                 <Calendar className="w-4 h-4 text-[#C5A059]" />
@@ -140,7 +155,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCardModal, onNav
           </div>
 
           {/* Venue Notice */}
-          <div className="mb-8">
+          <div className="mb-6">
             <div className="flex items-center justify-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#735E50] mb-1">
               <MapPin className="w-4 h-4 text-[#8B2635]" />
               <span>Wedding Sanctum & Venue</span>
@@ -153,80 +168,130 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenCardModal, onNav
             </p>
           </div>
 
-          {/* Countdown Clock to Sacred Muhoortham */}
-          <div className="max-w-lg mx-auto bg-[#F7F2EA] rounded-xl p-4 sm:p-5 mb-8 border border-[#E6DBCE]">
-            <p className="text-xs font-semibold uppercase tracking-widest text-[#735E50] mb-3">
-              Countdown to the Sacred Muhoortham
-            </p>
-            <div className="grid grid-cols-4 gap-2 text-center">
-              <div className="bg-white/80 py-2.5 px-1 rounded-lg border border-[#E3D8C8]">
-                <span className="block font-mono text-2xl sm:text-3xl font-bold text-[#8B2635] tabular-nums">
-                  {timeLeft.days}
+          {/* Countdown Clock (Wider, Animated) & 2x2 Action Matrix (Compact) */}
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-3.5 sm:gap-4 items-stretch mb-2">
+            {/* Left Column: Countdown Clock (7 cols, Animated, Richer Width) */}
+            <div className="md:col-span-7 countdown-animated-box bg-gradient-to-br from-[#FFFDF9] via-[#FAF3E7] to-[#F3E6D3] rounded-2xl p-4 sm:p-5 border border-[#E6DBCE] flex flex-col justify-between h-full relative overflow-hidden group shadow-xs hover:shadow-md transition-all duration-300">
+              <div className="flex items-center justify-center gap-1.5 mb-3">
+                <span className="relative flex h-2 w-2 mr-0.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8B2635] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#8B2635]"></span>
                 </span>
-                <span className="text-[11px] font-medium text-[#735E50] uppercase">Days</span>
+                <p className="text-xs font-semibold uppercase tracking-widest text-[#735E50]">
+                  Countdown to Sacred Muhoortham
+                </p>
+                <div className="inline-flex items-center justify-center w-5 h-5">
+                  <Hourglass
+                    className="w-3.5 h-3.5 text-[#C5A059] transition-transform duration-700 ease-in-out"
+                    style={{ transform: `rotate(${hourglassAngle}deg)` }}
+                  />
+                </div>
               </div>
-              <div className="bg-white/80 py-2.5 px-1 rounded-lg border border-[#E3D8C8]">
-                <span className="block font-mono text-2xl sm:text-3xl font-bold text-[#8B2635] tabular-nums">
-                  {String(timeLeft.hours).padStart(2, '0')}
-                </span>
-                <span className="text-[11px] font-medium text-[#735E50] uppercase">Hours</span>
-              </div>
-              <div className="bg-white/80 py-2.5 px-1 rounded-lg border border-[#E3D8C8]">
-                <span className="block font-mono text-2xl sm:text-3xl font-bold text-[#8B2635] tabular-nums">
-                  {String(timeLeft.minutes).padStart(2, '0')}
-                </span>
-                <span className="text-[11px] font-medium text-[#735E50] uppercase">Mins</span>
-              </div>
-              <div className="bg-white/80 py-2.5 px-1 rounded-lg border border-[#E3D8C8]">
-                <span className="block font-mono text-2xl sm:text-3xl font-bold text-[#8B2635] tabular-nums">
-                  {String(timeLeft.seconds).padStart(2, '0')}
-                </span>
-                <span className="text-[11px] font-medium text-[#735E50] uppercase">Secs</span>
+              <div className="grid grid-cols-4 gap-2 text-center my-auto">
+                {/* Days */}
+                <div className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF6F0] to-[#F4EADE] py-2.5 sm:py-3 px-1 rounded-xl border border-[#DDD0C0] shadow-2xs hover:border-[#C5A059] transition-colors overflow-hidden">
+                  <div className="flex justify-center gap-3 absolute top-1 inset-x-0 pointer-events-none">
+                    <span className="w-1 h-1 rounded-full bg-[#8B2635]/30"></span>
+                    <span className="w-1 h-1 rounded-full bg-[#8B2635]/30"></span>
+                  </div>
+                  <div className="absolute top-[48%] left-0 right-0 h-[1px] bg-[#E5D7C7] z-10 pointer-events-none"></div>
+                  <div key={timeLeft.days} className="calendar-flip-card">
+                    <span className="block font-mono text-2xl sm:text-3xl font-bold text-[#8B2635] tabular-nums">
+                      {timeLeft.days}
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-semibold text-[#735E50] uppercase tracking-wider relative z-20">Days</span>
+                </div>
+
+                {/* Hours */}
+                <div className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF6F0] to-[#F4EADE] py-2.5 sm:py-3 px-1 rounded-xl border border-[#DDD0C0] shadow-2xs hover:border-[#C5A059] transition-colors overflow-hidden">
+                  <div className="flex justify-center gap-3 absolute top-1 inset-x-0 pointer-events-none">
+                    <span className="w-1 h-1 rounded-full bg-[#8B2635]/30"></span>
+                    <span className="w-1 h-1 rounded-full bg-[#8B2635]/30"></span>
+                  </div>
+                  <div className="absolute top-[48%] left-0 right-0 h-[1px] bg-[#E5D7C7] z-10 pointer-events-none"></div>
+                  <div key={timeLeft.hours} className="calendar-flip-card">
+                    <span className="block font-mono text-2xl sm:text-3xl font-bold text-[#8B2635] tabular-nums">
+                      {String(timeLeft.hours).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-semibold text-[#735E50] uppercase tracking-wider relative z-20">Hours</span>
+                </div>
+
+                {/* Minutes */}
+                <div className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF6F0] to-[#F4EADE] py-2.5 sm:py-3 px-1 rounded-xl border border-[#DDD0C0] shadow-2xs hover:border-[#C5A059] transition-colors overflow-hidden">
+                  <div className="flex justify-center gap-3 absolute top-1 inset-x-0 pointer-events-none">
+                    <span className="w-1 h-1 rounded-full bg-[#8B2635]/30"></span>
+                    <span className="w-1 h-1 rounded-full bg-[#8B2635]/30"></span>
+                  </div>
+                  <div className="absolute top-[48%] left-0 right-0 h-[1px] bg-[#E5D7C7] z-10 pointer-events-none"></div>
+                  <div key={timeLeft.minutes} className="calendar-flip-card">
+                    <span className="block font-mono text-2xl sm:text-3xl font-bold text-[#8B2635] tabular-nums">
+                      {String(timeLeft.minutes).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-semibold text-[#735E50] uppercase tracking-wider relative z-20">Mins</span>
+                </div>
+
+                {/* Seconds */}
+                <div className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF6F0] to-[#F4EADE] py-2.5 sm:py-3 px-1 rounded-xl border border-[#DDD0C0] shadow-2xs hover:border-[#C5A059] transition-colors overflow-hidden">
+                  <div className="flex justify-center gap-3 absolute top-1 inset-x-0 pointer-events-none">
+                    <span className="w-1 h-1 rounded-full bg-[#8B2635]/40"></span>
+                    <span className="w-1 h-1 rounded-full bg-[#8B2635]/40"></span>
+                  </div>
+                  <div className="absolute top-[48%] left-0 right-0 h-[1px] bg-[#E5D7C7] z-10 pointer-events-none"></div>
+                  <div key={timeLeft.seconds} className="calendar-flip-card">
+                    <span className="block font-mono text-2xl sm:text-3xl font-bold text-[#8B2635] tabular-nums">
+                      {String(timeLeft.seconds).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-semibold text-[#735E50] uppercase tracking-wider relative z-20">Secs</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Action CTAs */}
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            <button
-              onClick={onNavigateToGps}
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-[#8B2635] hover:bg-[#721F2B] active:bg-[#5C1822] rounded-lg transition-colors cursor-pointer shadow-sm"
-            >
-              <Compass className="w-4 h-4" />
-              <span>GPS Directions & Routes</span>
-            </button>
+            {/* Right Column: 2x2 Action Matrix (5 cols, Compact & Matched Height) */}
+            <div className="md:col-span-5 grid grid-cols-2 gap-2 h-full">
+              {/* 1. GPS Directions */}
+              <button
+                onClick={onNavigateToGps}
+                className="h-full flex flex-col items-center justify-center gap-1.5 p-2.5 sm:p-3 text-xs sm:text-sm font-semibold text-white bg-[#8B2635] hover:bg-[#721F2B] active:bg-[#5C1822] rounded-2xl transition-colors shadow-2xs text-center cursor-pointer min-h-[68px]"
+              >
+                <Compass className="w-4 h-4 shrink-0 text-[#E6C687]" />
+                <span className="leading-tight text-[11px] sm:text-xs">GPS Directions</span>
+              </button>
 
-            <button
-              onClick={onOpenCardModal}
-              className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-[#3B2D22] bg-[#F0E6D8] hover:bg-[#E7DBCB] active:bg-[#DECFC0] rounded-lg transition-colors cursor-pointer border border-[#D9CABB]"
-            >
-              <span>View Original Invitation Card</span>
-            </button>
+              {/* 2. Share Invitation */}
+              <button
+                onClick={handleShare}
+                className="h-full flex flex-col items-center justify-center gap-1.5 p-2.5 sm:p-3 text-xs sm:text-sm font-semibold text-[#4A3D34] bg-white hover:bg-[#FAF7F2] rounded-2xl border border-[#D9CABB] transition-colors shadow-2xs text-center cursor-pointer min-h-[68px]"
+              >
+                {copiedLink ? (
+                  <Check className="w-4 h-4 text-emerald-600 shrink-0" />
+                ) : (
+                  <Share2 className="w-4 h-4 text-[#8B2635] shrink-0" />
+                )}
+                <span className="leading-tight text-[11px] sm:text-xs">{copiedLink ? 'Link Copied!' : 'Share'}</span>
+              </button>
 
-            <button
-              onClick={handleAddToCalendar}
-              className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-[#4A3D34] bg-white hover:bg-[#F9F5EE] rounded-lg transition-colors cursor-pointer border border-[#D9CABB]"
-            >
-              <Calendar className="w-4 h-4 text-[#8B2635]" />
-              <span>Add to Calendar</span>
-            </button>
+              {/* 3. Add to Calendar */}
+              <button
+                onClick={handleAddToCalendar}
+                className="h-full flex flex-col items-center justify-center gap-1.5 p-2.5 sm:p-3 text-xs sm:text-sm font-semibold text-[#4A3D34] bg-white hover:bg-[#FAF7F2] rounded-2xl border border-[#D9CABB] transition-colors shadow-2xs text-center cursor-pointer min-h-[68px]"
+              >
+                <Calendar className="w-4 h-4 text-[#8B2635] shrink-0" />
+                <span className="leading-tight text-[11px] sm:text-xs">Add Calendar</span>
+              </button>
 
-            <button
-              onClick={handleShare}
-              className="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-semibold text-[#4A3D34] bg-white hover:bg-[#F9F5EE] rounded-lg transition-colors cursor-pointer border border-[#D9CABB]"
-            >
-              {copiedLink ? (
-                <>
-                  <Check className="w-4 h-4 text-emerald-600" />
-                  <span className="text-emerald-700">Link Copied!</span>
-                </>
-              ) : (
-                <>
-                  <Share2 className="w-4 h-4 text-[#735E50]" />
-                  <span>Share</span>
-                </>
-              )}
-            </button>
+              {/* 4. View Original Card */}
+              <button
+                onClick={onOpenCardModal}
+                className="h-full flex flex-col items-center justify-center gap-1.5 p-2.5 sm:p-3 text-xs sm:text-sm font-semibold text-[#3B2D22] bg-[#F0E6D8] hover:bg-[#E7DBCB] rounded-2xl border border-[#D9CABB] transition-colors shadow-2xs text-center cursor-pointer min-h-[68px]"
+              >
+                <Sparkles className="w-4 h-4 text-[#C5A059] shrink-0" />
+                <span className="leading-tight text-[11px] sm:text-xs">Original Card</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

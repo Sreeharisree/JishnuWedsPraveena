@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Sparkles, Home } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { WEDDING_DATA } from '../data/weddingDetails';
 
 export const CoupleStorySection: React.FC = () => {
@@ -12,10 +12,10 @@ export const CoupleStorySection: React.FC = () => {
   const BRIDE_FAMILY_FALLBACK = 'https://lh3.googleusercontent.com/d/10YdJSY7lf3GrwKer6D9O9V_uKClwWS5J=w1600';
 
   return (
-    <section id="ceremony" className="py-16 md:py-24 bg-[#FAF7F2] border-t border-[#ECE2D0]">
+    <section id="ceremony" className="py-10 md:py-16 bg-[#FAF7F2] border-t border-[#ECE2D0]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Heading */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-8">
           <span className="text-xs font-semibold uppercase tracking-widest text-[#8B2635]">
             Two Families, One Auspicious Union
           </span>
@@ -30,7 +30,7 @@ export const CoupleStorySection: React.FC = () => {
         {/* Two Column Profile Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           {/* Groom Profile Card */}
-          <div className="group bg-gradient-to-b from-[#FFFDF9] via-[#FAF4EA] to-[#F4E9D8] border border-[#D9CABB] rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden">
+          <div className="group bg-gradient-to-b from-[#FFFDF9] via-[#FAF4EA] to-[#F4E9D8] border border-[#D9CABB] rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden">
             <div>
               {/* Top: Prominent, Crystal-Clear Groom Family Photo */}
               <div className="relative w-full aspect-16/10 sm:aspect-16/9 overflow-hidden bg-[#E8DEC8]">
@@ -50,7 +50,7 @@ export const CoupleStorySection: React.FC = () => {
               </div>
 
               {/* Bottom: Gradient Filled Details Container */}
-              <div className="p-6 sm:p-7 relative">
+              <div className="p-6 sm:p-8 relative">
                 {/* Subtle Auspicious Corner Glow */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#C5A059]/15 via-[#8B2635]/5 to-transparent rounded-bl-full pointer-events-none" />
 
@@ -91,20 +91,10 @@ export const CoupleStorySection: React.FC = () => {
                 </div>
               </div>
             </div>
-
-            {/* Departure Info Banner at Card Bottom */}
-            <div className="p-6 pt-0">
-              <div className="p-3 bg-gradient-to-r from-white/90 via-[#FAF4EA] to-white/90 border border-[#DECFC0] rounded-xl flex items-center justify-between text-xs text-[#5D4F44] shadow-2xs">
-                <div className="flex items-center gap-1.5 font-semibold text-[#8B2635]">
-                  <Home className="w-4 h-4 text-[#8B2635]" />
-                  <span>Departs {groom.departureTime} from {groom.departurePoint}</span>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Bride Profile Card */}
-          <div className="group bg-gradient-to-b from-[#FFFDF9] via-[#FAF4EA] to-[#F4E9D8] border border-[#D9CABB] rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between overflow-hidden">
+          <div className="group bg-gradient-to-b from-[#FFFDF9] via-[#FAF4EA] to-[#F4E9D8] border border-[#D9CABB] rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden">
             <div>
               {/* Top: Prominent, Crystal-Clear Bride Family Photo */}
               <div className="relative w-full aspect-16/10 sm:aspect-16/9 overflow-hidden bg-[#E8DEC8]">
@@ -124,7 +114,7 @@ export const CoupleStorySection: React.FC = () => {
               </div>
 
               {/* Bottom: Gradient Filled Details Container */}
-              <div className="p-6 sm:p-7 relative">
+              <div className="p-6 sm:p-8 relative">
                 {/* Subtle Auspicious Corner Glow */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#C5A059]/15 via-[#8B2635]/5 to-transparent rounded-bl-full pointer-events-none" />
 
@@ -148,8 +138,8 @@ export const CoupleStorySection: React.FC = () => {
                     <span className="text-[#4A3D34]">{bride.native}</span>
                   </div>
                   <div>
-                    <span className="font-bold text-[#3B2D22]">Native Region: </span>
-                    <span className="text-[#4A3D34]">Kunnamthanam / Ithithanam</span>
+                    <span className="font-bold text-[#3B2D22]">Sharing Happiness: </span>
+                    <span className="text-[#4A3D34]">{bride.brother}</span>
                   </div>
                 </div>
 
@@ -162,16 +152,6 @@ export const CoupleStorySection: React.FC = () => {
                   <p>
                     • <strong>Maternal:</strong> Granddaughter of {bride.grandparentsMaternal} ({bride.grandparentsMaternalPlace})
                   </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Temple Connection Banner at Card Bottom */}
-            <div className="p-6 pt-0">
-              <div className="p-3 bg-gradient-to-r from-white/90 via-[#FAF4EA] to-white/90 border border-[#DECFC0] rounded-xl flex items-center justify-between text-xs text-[#5D4F44] shadow-2xs">
-                <div className="flex items-center gap-1.5 font-semibold text-[#8B2635]">
-                  <Heart className="w-4 h-4 text-[#8B2635]" />
-                  <span>Wedding at Madathilkavu Bhagavathi Temple, Kunnamthanam</span>
                 </div>
               </div>
             </div>

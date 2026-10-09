@@ -3,11 +3,6 @@
 @layer base {
   body, html {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
   }
 }
 
@@ -62,15 +57,71 @@
   animation: shimmerGold 5s ease-in-out infinite;
 }
 
-/* Anti-Screenshot, Drag & Print Shields */
-img {
-  -webkit-user-drag: none;
-  user-drag: none;
+/* Auspicious Countdown Breathing & Light Glow */
+@keyframes goldPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 16px -2px rgba(197, 160, 89, 0.2), 0 4px 12px rgba(0, 0, 0, 0.04);
+    border-color: rgba(230, 219, 206, 0.95);
+  }
+  50% {
+    box-shadow: 0 0 28px 4px rgba(197, 160, 89, 0.4), 0 0 16px 1px rgba(139, 38, 53, 0.25);
+    border-color: rgba(197, 160, 89, 0.65);
+  }
 }
 
-@media print {
-  html, body {
-    display: none !important;
-    visibility: hidden !important;
+.countdown-animated-box {
+  animation: goldPulseGlow 3.5s ease-in-out infinite;
+}
+
+/* Table Calendar Date Change Flip Animation */
+@keyframes calendarFlip {
+  0% {
+    transform: perspective(300px) rotateX(0deg);
+    transform-origin: 50% 100%;
+    filter: brightness(1);
   }
+  48% {
+    transform: perspective(300px) rotateX(-85deg);
+    transform-origin: 50% 50%;
+    filter: brightness(0.82);
+  }
+  52% {
+    transform: perspective(300px) rotateX(85deg);
+    transform-origin: 50% 50%;
+    filter: brightness(0.88);
+  }
+  100% {
+    transform: perspective(300px) rotateX(0deg);
+    transform-origin: 50% 0%;
+    filter: brightness(1);
+  }
+}
+
+.calendar-flip-card {
+  animation: calendarFlip 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+@keyframes secondTickPulse {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.05);
+    color: #A83244;
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+.second-tick {
+  animation: secondTickPulse 1s ease-in-out infinite;
+}
+
+/* Responsive Media */
+img:not([class*="h-"]):not([height]) {
+  max-width: 100%;
+  height: auto;
 }
