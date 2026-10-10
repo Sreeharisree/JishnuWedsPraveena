@@ -49,7 +49,7 @@ export const WEDDING_DATA = {
       fullName: 'K.S. Praveena',
       native: 'Kochuzhathil, Kunnamthanam',
       parents: 'Late. Mr. Sajikumar K. N. & Mrs. Prasannakumari P. N.',
-      brother: 'K. S. Praveen',
+      brother: 'K. S. Pranav',
       grandparentsPaternal: 'Mr. K. V. Narayana Pillai & Late. Mrs. M. K. Saraswathi Amma',
       grandparentsMaternal: 'Late. Mr. Nanukkuttan Nair & Mrs. Vijayamma',
       grandparentsMaternalPlace: 'Ithithanam',
