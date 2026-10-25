@@ -12,17 +12,17 @@ export const CoupleStorySection: React.FC = () => {
   const BRIDE_FAMILY_FALLBACK = 'https://lh3.googleusercontent.com/d/10YdJSY7lf3GrwKer6D9O9V_uKClwWS5J=w1600';
 
   return (
-    <section id="ceremony" className="py-10 md:py-16 bg-[#FAF7F2] border-t border-[#ECE2D0]">
+    <section id="ceremony" className="py-10 md:py-16 bg-[#FAF7F2] dark:bg-[#120E0C] border-t border-[#ECE2D0] dark:border-[#261E1A] transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-8">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#8B2635]">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[#8B2635] dark:text-[#E88294]">
             Two Families, One Auspicious Union
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#2C241E] mt-2 text-balance">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#2C241E] dark:text-[#FAF5EE] mt-2 text-balance">
             Meet the Bride & Groom
           </h2>
-          <p className="text-sm sm:text-base text-[#6B5A4E] mt-2">
+          <p className="text-sm sm:text-base text-[#6B5A4E] dark:text-[#BFAFA2] mt-2">
             With the sacred blessings of our revered ancestors, parents, and beloved elders.
           </p>
         </div>
@@ -30,10 +30,10 @@ export const CoupleStorySection: React.FC = () => {
         {/* Two Column Profile Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           {/* Groom Profile Card */}
-          <div className="group bg-gradient-to-b from-[#FFFDF9] via-[#FAF4EA] to-[#F4E9D8] border border-[#D9CABB] rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden">
+          <div className="group bg-gradient-to-b from-[#FFFDF9] via-[#FAF4EA] to-[#F4E9D8] dark:from-[#1E1714] dark:via-[#191310] dark:to-[#140F0C] border border-[#D9CABB] dark:border-[#382B24] rounded-3xl shadow-sm dark:shadow-xl hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden">
             <div>
               {/* Top: Prominent, Crystal-Clear Groom Family Photo */}
-              <div className="relative w-full aspect-16/10 sm:aspect-16/9 overflow-hidden bg-[#E8DEC8]">
+              <div className="relative w-full aspect-16/10 sm:aspect-16/9 overflow-hidden bg-[#E8DEC8] dark:bg-[#251D18]">
                 <img
                   src={GROOM_FAMILY_LOCAL}
                   onError={(e) => {
@@ -46,7 +46,7 @@ export const CoupleStorySection: React.FC = () => {
                 />
 
                 {/* Smooth Gradient Transition from Photo to Card Body */}
-                <div className="absolute bottom-0 inset-x-0 h-14 bg-gradient-to-t from-[#FFFDF9] via-[#FFFDF9]/60 to-transparent pointer-events-none" />
+                <div className="absolute bottom-0 inset-x-0 h-14 bg-gradient-to-t from-[#FFFDF9] via-[#FFFDF9]/60 dark:from-[#1E1714] dark:via-[#1E1714]/60 to-transparent pointer-events-none" />
               </div>
 
               {/* Bottom: Gradient Filled Details Container */}
@@ -54,7 +54,7 @@ export const CoupleStorySection: React.FC = () => {
                 {/* Subtle Auspicious Corner Glow */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#C5A059]/15 via-[#8B2635]/5 to-transparent rounded-bl-full pointer-events-none" />
 
-                <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#8B2635] mb-1">
+                <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#8B2635] dark:text-[#E88294] mb-1">
                   <Sparkles className="w-4 h-4 text-[#C5A059]" />
                   <span>The Beloved Groom</span>
                 </div>
@@ -64,24 +64,24 @@ export const CoupleStorySection: React.FC = () => {
                 </h3>
 
                 {/* Parents & Residence Box */}
-                <div className="p-4 bg-white/85 backdrop-blur-xs border border-[#E4D8C7] rounded-2xl space-y-2 text-xs sm:text-sm shadow-xs">
+                <div className="p-4 bg-white/85 dark:bg-[#251D18]/90 backdrop-blur-xs border border-[#E4D8C7] dark:border-[#3D3027] rounded-2xl space-y-2 text-xs sm:text-sm shadow-xs">
                   <div>
-                    <span className="font-bold text-[#3B2D22]">Parents: </span>
-                    <span className="text-[#4A3D34]">{groom.parents}</span>
+                    <span className="font-bold text-[#3B2D22] dark:text-[#EFE2D5]">Parents: </span>
+                    <span className="text-[#4A3D34] dark:text-[#CBBBB0]">{groom.parents}</span>
                   </div>
                   <div>
-                    <span className="font-bold text-[#3B2D22]">Ancestral Home: </span>
-                    <span className="text-[#4A3D34]">{groom.native}</span>
+                    <span className="font-bold text-[#3B2D22] dark:text-[#EFE2D5]">Ancestral Home: </span>
+                    <span className="text-[#4A3D34] dark:text-[#CBBBB0]">{groom.native}</span>
                   </div>
                   <div>
-                    <span className="font-bold text-[#3B2D22]">Sharing Happiness: </span>
-                    <span className="text-[#4A3D34]">{groom.brother}</span>
+                    <span className="font-bold text-[#3B2D22] dark:text-[#EFE2D5]">Sharing Happiness: </span>
+                    <span className="text-[#4A3D34] dark:text-[#CBBBB0]">{groom.brother}</span>
                   </div>
                 </div>
 
                 {/* Lineage & Ancestral Blessings Box */}
-                <div className="mt-3.5 space-y-2 text-xs text-[#4A3D34] leading-relaxed bg-white/85 backdrop-blur-xs p-4 rounded-2xl border border-[#E4D8C7] shadow-xs">
-                  <p className="font-bold text-[#3B2D22]">Ancestral Lineage:</p>
+                <div className="mt-3.5 space-y-2 text-xs text-[#4A3D34] dark:text-[#CBBBB0] leading-relaxed bg-white/85 dark:bg-[#251D18]/90 backdrop-blur-xs p-4 rounded-2xl border border-[#E4D8C7] dark:border-[#3D3027] shadow-xs">
+                  <p className="font-bold text-[#3B2D22] dark:text-[#EFE2D5]">Ancestral Lineage:</p>
                   <p>
                     • <strong>Paternal:</strong> Grandson of {groom.grandparentsPaternal} ({groom.grandparentsPaternalHouse})
                   </p>
@@ -94,10 +94,10 @@ export const CoupleStorySection: React.FC = () => {
           </div>
 
           {/* Bride Profile Card */}
-          <div className="group bg-gradient-to-b from-[#FFFDF9] via-[#FAF4EA] to-[#F4E9D8] border border-[#D9CABB] rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden">
+          <div className="group bg-gradient-to-b from-[#FFFDF9] via-[#FAF4EA] to-[#F4E9D8] dark:from-[#1E1714] dark:via-[#191310] dark:to-[#140F0C] border border-[#D9CABB] dark:border-[#382B24] rounded-3xl shadow-sm dark:shadow-xl hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden">
             <div>
               {/* Top: Prominent, Crystal-Clear Bride Family Photo */}
-              <div className="relative w-full aspect-16/10 sm:aspect-16/9 overflow-hidden bg-[#E8DEC8]">
+              <div className="relative w-full aspect-16/10 sm:aspect-16/9 overflow-hidden bg-[#E8DEC8] dark:bg-[#251D18]">
                 <img
                   src={BRIDE_FAMILY_LOCAL}
                   onError={(e) => {
@@ -110,7 +110,7 @@ export const CoupleStorySection: React.FC = () => {
                 />
 
                 {/* Smooth Gradient Transition from Photo to Card Body */}
-                <div className="absolute bottom-0 inset-x-0 h-14 bg-gradient-to-t from-[#FFFDF9] via-[#FFFDF9]/60 to-transparent pointer-events-none" />
+                <div className="absolute bottom-0 inset-x-0 h-14 bg-gradient-to-t from-[#FFFDF9] via-[#FFFDF9]/60 dark:from-[#1E1714] dark:via-[#1E1714]/60 to-transparent pointer-events-none" />
               </div>
 
               {/* Bottom: Gradient Filled Details Container */}
@@ -118,7 +118,7 @@ export const CoupleStorySection: React.FC = () => {
                 {/* Subtle Auspicious Corner Glow */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#C5A059]/15 via-[#8B2635]/5 to-transparent rounded-bl-full pointer-events-none" />
 
-                <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#8B2635] mb-1">
+                <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#8B2635] dark:text-[#E88294] mb-1">
                   <Sparkles className="w-4 h-4 text-[#C5A059]" />
                   <span>The Beloved Bride</span>
                 </div>
@@ -128,24 +128,24 @@ export const CoupleStorySection: React.FC = () => {
                 </h3>
 
                 {/* Parents & Residence Box */}
-                <div className="p-4 bg-white/85 backdrop-blur-xs border border-[#E4D8C7] rounded-2xl space-y-2 text-xs sm:text-sm shadow-xs">
+                <div className="p-4 bg-white/85 dark:bg-[#251D18]/90 backdrop-blur-xs border border-[#E4D8C7] dark:border-[#3D3027] rounded-2xl space-y-2 text-xs sm:text-sm shadow-xs">
                   <div>
-                    <span className="font-bold text-[#3B2D22]">Parents: </span>
-                    <span className="text-[#4A3D34]">{bride.parents}</span>
+                    <span className="font-bold text-[#3B2D22] dark:text-[#EFE2D5]">Parents: </span>
+                    <span className="text-[#4A3D34] dark:text-[#CBBBB0]">{bride.parents}</span>
                   </div>
                   <div>
-                    <span className="font-bold text-[#3B2D22]">Family Residence: </span>
-                    <span className="text-[#4A3D34]">{bride.native}</span>
+                    <span className="font-bold text-[#3B2D22] dark:text-[#EFE2D5]">Family Residence: </span>
+                    <span className="text-[#4A3D34] dark:text-[#CBBBB0]">{bride.native}</span>
                   </div>
                   <div>
-                    <span className="font-bold text-[#3B2D22]">Sharing Happiness: </span>
-                    <span className="text-[#4A3D34]">{bride.brother}</span>
+                    <span className="font-bold text-[#3B2D22] dark:text-[#EFE2D5]">Sharing Happiness: </span>
+                    <span className="text-[#4A3D34] dark:text-[#CBBBB0]">{bride.brother}</span>
                   </div>
                 </div>
 
                 {/* Lineage & Ancestral Blessings Box */}
-                <div className="mt-3.5 space-y-2 text-xs text-[#4A3D34] leading-relaxed bg-white/85 backdrop-blur-xs p-4 rounded-2xl border border-[#E4D8C7] shadow-xs">
-                  <p className="font-bold text-[#3B2D22]">Ancestral Lineage:</p>
+                <div className="mt-3.5 space-y-2 text-xs text-[#4A3D34] dark:text-[#CBBBB0] leading-relaxed bg-white/85 dark:bg-[#251D18]/90 backdrop-blur-xs p-4 rounded-2xl border border-[#E4D8C7] dark:border-[#3D3027] shadow-xs">
+                  <p className="font-bold text-[#3B2D22] dark:text-[#EFE2D5]">Ancestral Lineage:</p>
                   <p>
                     • <strong>Paternal:</strong> Granddaughter of {bride.grandparentsPaternal}
                   </p>

@@ -241,3 +241,7 @@ export const CAROUSEL_ORDERED_PHOTOS: PhotoItem[] = [
   INITIAL_GROOM_PHOTOS[2],  // Groom 3
   INITIAL_BRIDE_PHOTOS[2],  // Bride 3
 ];
+
+export { CURATED_SELECTED_WISHES } from './selectedWishes';
+export type { SelectedWish } from './selectedWishes';
+

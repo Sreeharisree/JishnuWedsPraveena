@@ -35,25 +35,25 @@ export const InvitationCoverModal: React.FC = () => {
           e.stopPropagation();
           handleOpenInvitation();
         }}
-        className="relative w-full max-w-lg bg-[#FFFDF9] border-4 border-[#C5A059] rounded-3xl shadow-2xl p-6 sm:p-8 text-center text-[#2C241E] overflow-hidden"
+        className="relative w-full max-w-lg bg-[#FFFDF9] dark:bg-[#1A1412] border-4 border-[#C5A059] dark:border-[#D4AF37] rounded-3xl shadow-2xl p-6 sm:p-8 text-center text-[#2C241E] dark:text-[#FAF5EE] overflow-hidden transition-colors duration-300"
       >
         {/* Traditional Gold Corner Accents */}
-        <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-[#C5A059]" />
-        <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-[#C5A059]" />
-        <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-[#C5A059]" />
-        <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-[#C5A059]" />
+        <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-[#C5A059] dark:border-[#D4AF37]" />
+        <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-[#C5A059] dark:border-[#D4AF37]" />
+        <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-[#C5A059] dark:border-[#D4AF37]" />
+        <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-[#C5A059] dark:border-[#D4AF37]" />
 
         {/* Sacred Sanskrit Invocation */}
-        <p className="text-xs sm:text-sm font-serif tracking-widest text-[#8B2635] uppercase font-bold mb-3">
+        <p className="text-xs sm:text-sm font-serif tracking-widest text-[#8B2635] dark:text-[#E88294] uppercase font-bold mb-3">
           ॥ ॐ ശ്രീ മഹാഗണപതയേ നമഃ ॥
         </p>
 
         {/* Sacred Love Motif */}
-        <div className="mx-auto w-14 h-14 rounded-full bg-[#FAF0E1] border-2 border-[#C5A059] flex items-center justify-center shadow-inner mb-4">
-          <Heart className="w-7 h-7 text-[#8B2635] fill-[#8B2635]/25 animate-pulse" />
+        <div className="mx-auto w-14 h-14 rounded-full bg-[#FAF0E1] dark:bg-[#2A201A] border-2 border-[#C5A059] dark:border-[#D4AF37] flex items-center justify-center shadow-inner mb-4">
+          <Heart className="w-7 h-7 text-[#8B2635] dark:text-[#E88294] fill-[#8B2635]/25 dark:fill-[#E88294]/30 animate-pulse" />
         </div>
 
-        <p className="text-xs tracking-wider text-[#6B5A4E] uppercase font-semibold mb-1">
+        <p className="text-xs tracking-wider text-[#6B5A4E] dark:text-[#C5B4A5] uppercase font-semibold mb-1">
           Auspicious Wedding Invitation
         </p>
 
@@ -62,19 +62,19 @@ export const InvitationCoverModal: React.FC = () => {
           <span className="name-shimmer">Jishnu & Praveena</span>
         </h2>
 
-        <p className="text-xs text-[#5D4F44] max-w-sm mx-auto mb-6">
+        <p className="text-xs text-[#5D4F44] dark:text-[#C5B4A5] max-w-sm mx-auto mb-6">
           Sunday, 06 December 2026 • Madathilkavu Bhagavathi Temple, Kunnamthanam
         </p>
 
         {/* Ceremonial Button */}
         <button
           onClick={handleOpenInvitation}
-          className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 bg-[#8B2635] hover:bg-[#721F2B] active:bg-[#5C1822] text-white font-semibold text-sm rounded-full shadow-lg border border-[#C5A059] transition-all transform hover:scale-[1.02] cursor-pointer tracking-wide"
+          className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 bg-[#8B2635] hover:bg-[#721F2B] active:bg-[#5C1822] dark:bg-[#A83244] dark:hover:bg-[#912536] text-white font-semibold text-sm rounded-full shadow-lg border border-[#C5A059] dark:border-[#D4AF37] transition-all transform hover:scale-[1.02] cursor-pointer tracking-wide"
         >
           Open Invitation
         </button>
 
-        <p className="text-[11px] text-[#7A6B5F] mt-4">
+        <p className="text-[11px] text-[#7A6B5F] dark:text-[#A8988B] mt-4">
           (Tap anywhere on screen to open)
         </p>
       </div>
